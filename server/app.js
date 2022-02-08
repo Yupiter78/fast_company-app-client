@@ -19,6 +19,7 @@ const PORT = config.get("port") ?? 8080;
 async function start() {
     try {
         await mongoose.connect(config.get("mongoUri"));
+        console.log(chalk.bgGreen("MongoDB connected."));
         app.listen(PORT, () =>
             console.log(
                 chalk.bgGreen(`Server has been started on port ${PORT}...`)
