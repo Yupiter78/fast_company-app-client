@@ -1,8 +1,42 @@
 const express = require("express");
+const bcrypt = require("bcryptjs");
+const User = require("../models/User");
+const { generateUserData } = require("../utils/helpers");
 const router = express.Router({ mergeParams: true });
 
 // /api/auth/signUp
-router.post("/signUp", async (req, res) => {});
+// 1. get data from req (email, password ...)
+// 2. check if users already exists
+// 3. hash password
+// 4. user create
+// 5. generate tokens
+router.post("/signUp", async (req, res) => {
+    try {
+        const { email, password } = req.body;
+        const existingUser = await User.findOne({ email });
+
+        if (existingUser) {
+            return res.status(400).json({
+                error: {
+                    message: "EMAIL_EXISTS",
+                    code: 400
+                }
+            });
+        }
+
+        const hashedPassword = await bcrypt.hash(password, 12);
+
+        const newUser = User.create({
+            ...generateUserData(),
+            ...res.body,
+            password: hashedPassword
+        });
+    } catch (error) {
+        res.status(500).json({
+            message: "An error has occurred on the server. Try later."
+        });
+    }
+});
 
 router.post("/signInWithPassword", async (req, res) => {});
 
