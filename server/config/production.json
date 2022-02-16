@@ -1,0 +1,6 @@
+{
+  "port": 8080,
+  "mongoUri": "mongodb+srv://yuriy-yupiter:1-qVjyujL<*jfd@cluster0.9v5vo.mongodb.net/jfd-fullstack-app?retryWrites=true&w=majority",
+  "accessSecret": "super secret from backend",
+  "refreshSecret": "super refresh key"
+}

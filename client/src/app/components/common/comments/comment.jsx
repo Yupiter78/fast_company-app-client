@@ -39,7 +39,7 @@ const Comment = ({
                                             className="btn btn-sm text-primary d-flex align-items-center"
                                             onClick={() => onRemove(id)}
                                         >
-                                            <i className="bi bi-x-lg"></i>
+                                            <i className="bi bi-x-lg" />
                                         </button>
                                     )}
                                 </div>
