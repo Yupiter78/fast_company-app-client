@@ -18,7 +18,7 @@ const UserCard = ({ user }) => {
                         className="position-absolute top-0 end-0 btn btn-light btn-sm"
                         onClick={handleClick}
                     >
-                        <i className="bi bi-gear"></i>
+                        <i className="bi bi-gear" />
                     </button>
                 )}
 
@@ -37,11 +37,11 @@ const UserCard = ({ user }) => {
                             <i
                                 className="bi bi-caret-down-fill text-primary"
                                 role="button"
-                            ></i>
+                            />
                             <i
                                 className="bi bi-caret-up text-secondary"
                                 role="button"
-                            ></i>
+                            />
                             <span className="ms-2">{user.rate}</span>
                         </div>
                     </div>

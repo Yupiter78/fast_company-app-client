@@ -1,12 +1,16 @@
 import React from "react";
 import useMockData from "../utils/mockData";
+import config from "../config.json";
 
 const Main = () => {
+    const isFireBase = config.isFireBase;
+    console.log("isFireBase:", isFireBase);
     const { error, initialize, progress, status } = useMockData();
     const handleClick = () => {
         initialize();
     };
-    return (
+
+    return isFireBase ? (
         <div className="container mt-5">
             <h1> Main Page</h1>
             <h3>Инициализация данных в FireBase</h3>
@@ -19,6 +23,10 @@ const Main = () => {
                 {" "}
                 Инициализировать
             </button>
+        </div>
+    ) : (
+        <div>
+            <h4 className="text-primary">Log in or register</h4>
         </div>
     );
 };
