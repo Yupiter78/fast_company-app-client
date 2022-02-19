@@ -25,8 +25,12 @@ const Main = () => {
             </button>
         </div>
     ) : (
-        <div>
-            <h4 className="text-primary">Log in or register</h4>
+        <div className="container">
+            <div className="row">
+                <h4 className="col-md-6 offset-md-3 text-primary text-center">
+                    Log in or register
+                </h4>
+            </div>
         </div>
     );
 };
