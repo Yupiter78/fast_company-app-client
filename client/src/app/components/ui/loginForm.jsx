@@ -12,9 +12,13 @@ const LoginForm = () => {
         password: "",
         stayOn: false
     });
-    const loginError = useSelector(getAuthErrors());
+    const authError = useSelector(getAuthErrors());
+    const loginError =
+        authError === "Пользователь с таким Email уже существует"
+            ? null
+            : authError;
     const history = useHistory();
-    const dispath = useDispatch();
+    const dispatch = useDispatch();
     const [errors, setErrors] = useState({});
 
     const handleChange = (target) => {
@@ -54,7 +58,7 @@ const LoginForm = () => {
             ? history.location.state.from.pathname
             : "/";
 
-        dispath(login({ payload: data, redirect }));
+        dispatch(login({ payload: data, redirect }));
     };
     return (
         <form onSubmit={handleSubmit}>

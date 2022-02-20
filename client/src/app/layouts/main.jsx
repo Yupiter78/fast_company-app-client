@@ -4,7 +4,6 @@ import config from "../config.json";
 
 const Main = () => {
     const isFireBase = config.isFireBase;
-    console.log("isFireBase:", isFireBase);
     const { error, initialize, progress, status } = useMockData();
     const handleClick = () => {
         initialize();

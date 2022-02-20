@@ -110,7 +110,13 @@ export const signUp = (payload) => async (dispatch) => {
         dispatch(authRequestSuccess({ userId: data.userId }));
         history.push("/users");
     } catch (error) {
-        dispatch(authRequestFailed(error.message));
+        const { code, message } = error.response.data.error;
+        if (code === 400) {
+            const errorMessage = generetaAuthError(message);
+            dispatch(authRequestFailed(errorMessage));
+        } else {
+            dispatch(authRequestFailed(error.message));
+        }
     }
 };
 
